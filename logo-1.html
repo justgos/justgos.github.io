@@ -33,10 +33,10 @@
       //console.log($("#logo-p1").height());
       setTimeout(function() {
         $("#logo-p1").addClass("show");
-        setTimeout(function() { $("#logo-c1").addClass("show"); }, 1400);
-        setTimeout(function() { $("#logo-p2").addClass("show"); }, 1400);
-        setTimeout(function() { $("#logo-p3").addClass("show"); }, 2600);
-        setTimeout(function() { $("#logo-p4").addClass("show"); }, 3500);
+        setTimeout(function() { $("#logo-c1").addClass("show"); }, 1000);
+        setTimeout(function() { $("#logo-p2").addClass("show"); }, 1500);
+        setTimeout(function() { $("#logo-p3").addClass("show"); }, 2100);
+        setTimeout(function() { $("#logo-p4").addClass("show"); }, 3000);
       }, 1000);
       //fillV($("#logo-p1"), 0, 5);
    });
@@ -74,8 +74,8 @@
     -moz-transition: 3s;
     -ms-transition: 3s;
     -o-transition: 3s;*/
-    transition: 2.0s cubic-bezier(.15,.08,.23,.97);
-    height: 554px;
+    transition: 1.0s cubic-bezier(.15,.08,.23,.97);
+    height: 480px;
   }
   #logo-c1 {
     background: url(logo-c1.png);
@@ -86,7 +86,7 @@
     opacity: 0;
   }
   #logo-c1.show {
-    transition: 0.8s ease-in-out;
+    transition: 0.4s ease-in-out;
     /*-webkit-clip-path: circle(100% at 50% 9.2%);
     clip-path: circle(100% at 50% 9.2%);*/
     opacity: 1;
@@ -95,12 +95,14 @@
     background: url(logo-p2.png);
     background-position: center bottom;
     background-size: 384px;
-    height: 0px;
+    height: 200px;
     opacity:0;
+    /*-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), color-stop(95%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)), to(rgba(0,0,0,1)))*/
   }
   #logo-p2.show {
-    transition: 1.8s ease-in-out;
-    height: 554px;
+    transition: 0.75s ease-in-out;
+    height: 400px;
     opacity:1;
   }
   #logo-p3 {
