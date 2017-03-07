@@ -1,7 +1,7 @@
 $(function() {
   if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-  var WIDTH = 16;
+  var WIDTH = 24;
   var BIRDS = WIDTH * WIDTH;
   var BOUNDS = 800, BOUNDS_HALF = BOUNDS / 2;
 
@@ -14,9 +14,9 @@ $(function() {
           Math.random() * BOUNDS - BOUNDS_HALF));
     birdSpeedV.push(0.8 + Math.pow(Math.random(), 2.0) * 2.0);
     var colorShift = Math.random();
-    birdColorV.push(new THREE.Color(0.4 + colorShift * 0.4,
-                                    0.2 + colorShift * 0.2,
-                                    0.4 + colorShift * 0.2));
+    birdColorV.push(new THREE.Color(0.6 + colorShift * 0.3,
+                                    0.4 + colorShift * 0.2,
+                                    0.6 + colorShift * 0.2));
   }
 
   // Custom Geometry - using 3 triangles each. No UVs, no normals currently.
@@ -110,6 +110,7 @@ $(function() {
           gyroPresent = true;
   });
   var last = performance.now();
+  var startTime = performance.now();
   var gpuCompute;
   var velocityVariable;
   var positionVariable;
@@ -123,7 +124,7 @@ $(function() {
 		mieCoefficient: 0.005,
 		mieDirectionalG: 0.8,
 		luminance: 1,
-		inclination: 0.52, // elevation / inclination
+		inclination: 0.555, // elevation / inclination
 		azimuth: 0.25
   }
   init();
@@ -144,7 +145,7 @@ $(function() {
   	container.appendChild( renderer.domElement );
   	//initComputeRenderer();
   	stats = new Stats();
-  	container.appendChild( stats.dom );
+  	//container.appendChild( stats.dom );
   	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
   	document.addEventListener( 'touchstart', onDocumentTouchStart, false );
   	document.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -168,6 +169,10 @@ $(function() {
 		scene.add( sunSphere );
 
   	initBirds();
+
+    setTimeout(function() {
+      $('#msg-div').fadeOut(5000);
+    }, 4000);
   }
   function initComputeRenderer() {
   			gpuCompute = new GPUComputationRenderer( WIDTH, WIDTH, renderer );
@@ -210,7 +215,8 @@ $(function() {
   		texturePosition: { value: null },
   		textureVelocity: { value: null },
   		time: { value: 1.0 },
-  		delta: { value: 0.0 }
+  		delta: { value: 0.0 },
+      runTime: { value: 0.0 }
   	};
   	// ShaderMaterial
   	var material = new THREE.ShaderMaterial( {
@@ -219,6 +225,7 @@ $(function() {
   		fragmentShader: document.getElementById( 'birdFS' ).textContent,
   		side: THREE.DoubleSide
   	});
+    material.transparent = true;
   	birdMesh = new THREE.Mesh( geometry, material );
   	birdMesh.rotation.y = Math.PI / 2;
   	birdMesh.matrixAutoUpdate = false;
@@ -264,6 +271,7 @@ $(function() {
 
   	birdUniforms.time.value = now;
   	birdUniforms.delta.value = delta;
+    birdUniforms.runTime.value = (now - startTime) / 1000.0;
   	//velocityUniforms.predator.value.set( 0.5 * mouseX / windowHalfX, - 0.5 * mouseY / windowHalfY, 0 );
   	mouseX = 10000;
   	mouseY = 10000;

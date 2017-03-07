@@ -21,6 +21,7 @@ html
       varying vec4 vColor;
       varying float z;
       uniform float time;
+      uniform float runTime;
       
       float tanh(float val)
       {
@@ -34,7 +35,7 @@ html
         //vec3 pos = tmpPos.xyz;
         //vec3 velocity = normalize(texture2D( textureVelocity, reference ).xyz);
         vec3 newPosition = position;
-        if ( birdVertex == 4.0 || birdVertex == 7.0 ) {
+        if ( birdVertex == 7.0 || birdVertex == 7.0 ) {
           // flap wings
           newPosition.y = sin( time / 200.0 * birdSpeed ) * 5.;
         }
@@ -60,7 +61,7 @@ html
         newPosition =  maty * matz * newPosition;*/
         newPosition += birdPos;
         z = tanh(length(newPosition / 800.0));
-        vColor = vec4( birdColor, 1.0 );
+        vColor = vec4( birdColor, min(1.0, max((runTime-9.0) / 7.0, 0.0)) );
         gl_Position = projectionMatrix *  viewMatrix  * vec4( newPosition, 1.0 );
       }
     script#birdFS(type="x-shader/x-fragment").
@@ -72,7 +73,10 @@ html
         //float z2 = 0.2 + ( 1000. - z ) / 1000. * vColor.x;
         //gl_FragColor = vec4( z2, z2, z2, 1. );
         
-        gl_FragColor = vColor + z;
+        vec4 col = vColor;
+        col.xyz += z;
+        col.w -= z*1.7;
+        gl_FragColor = col;
       }
       
     script#fragmentShaderPosition(type="x-shader/x-fragment").
@@ -199,5 +203,23 @@ html
         margin: 0;
         padding: 0;
       }
+      
+      #msg-div {
+        position: relative;
+        left: -50%;
+        top: -50%;
+        font: 24pt 'Lora', serif;
+        color: #bf202f;
+        text-align: center;
+        line-height: 2
+      }
+      
+    link(href="https://fonts.googleapis.com/css?family=Lora", rel="stylesheet")
 
 body
+  div(style="position: absolute; left: 50%; top: 30%")
+    #msg-div.
+      One spring day<br/>
+      tolerance became acceptance<br/>
+      acceptance became love<br/>
+      and no one was sorry
