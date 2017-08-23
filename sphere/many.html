@@ -437,14 +437,17 @@
 						sphereCountY = 3,
 						containerW = 700.0,
 						containerH = 500.0
+				var sNum = 1;
 				for(let i=0; i<sphereCountX; i++) {
 					for(let j=0; j<sphereCountY; j++) {
 						makeSphere(-containerW/2 + (containerW/(Math.max(sphereCountX-1, 1)))*i,
 											-containerH/2 + (containerH/(Math.max(sphereCountY-1, 1)))*j,
 											-200, 100,
-											"textures/sphere-diffuse.png"
+											'textures/' + sNum + '.png'
+											//"textures/sphere-diffuse.png"
 											//"textures/ffIX-artbook073.jpg"
 						)
+						sNum++
 					}
 				}
 
