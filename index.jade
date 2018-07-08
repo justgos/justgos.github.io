@@ -1,0 +1,141 @@
+//output:index.html
+doctype html
+html
+  head
+    //- , maximum-scale=1.0, user-scalable=no
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    //- script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js", integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js", integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49", crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js", integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T", crossorigin="anonymous")
+    script(src="js/app.js")
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css", integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css", integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css", integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lora:300,400,600")
+    link(rel="stylesheet", href="css/app.css")
+    link(rel="shortcut icon", type="image/png", href="/favicon.png")
+    title GoS's board
+  body
+    #welcome
+      .container
+        .row
+          .col-12
+            #logo-wrapper
+              #logo-img-wrapper
+                img#logo(src="img/logo.png")
+              #welcome-text-1
+                span(style="opacity:0;") .
+              #welcome-text-2
+                span(style="opacity:0;") .
+      //- | Hello, dear traveller
+      //- br
+      //- | i'm GoS, and here is some stuff i love and do
+      //- .container
+      //-   .row
+      //-     .col-12
+      //-       img#logo.mx-auto(src="img/logo.png")
+      //-       p
+      //-         | Hello, dear traveller
+      //-       p
+      //-         | i'm GoS, and here is some stuff i love and do
+    //- .container
+    //-   .row
+    //-     .col-12
+    //-       img#logo.mx-auto(src="img/logo.png")
+    //- .container
+    //-   .row
+    //-     .col-12
+    //-       p Hello, dear traveller
+    //-       p i'm GoS, and here is some stuff i love and do
+    .container
+      .row
+        .col-12
+          h2(style="margin-top: 0;") In progress
+    .container
+      .row
+        .col-12
+          h3 Extended Knowledge
+          p
+            | A tool for thinking on scales larger/longer than mindmaps usually allow for.
+            br
+            | Alone and together.
+          p
+            | Will be publicly available this summer.
+          p
+            a.source-link(href="ex-k/", target="") demo
+    .container
+      .row
+        video(autoplay, loop, muted, src="img/ex-k.mp4")
+        .img-shadow
+            
+    .container
+      .row
+        .col-12
+          h2 Other works
+    .container
+      .row
+        .col-12
+          h3 Mind-body evolution
+          p
+            | Agents can evolve new limbs, which add new `in` and `out` neurons.
+            br
+            | Mind is a Spiking Neural Network, implemented in 
+            a(href="https://brian2.readthedocs.io/en/stable/", target="_blank") brian2
+            |  and using 
+            a(href="http://www.izhikevich.org/publications/spikes.htm", target="_blank") Izhikevich
+            |  cells dynamics.
+          p
+            | This experiment is currently suspended.
+          p
+            small.source-link not published
+    .container
+      .row
+        img(src="img/body-evo-mind-structure.jpg")
+        .img-shadow
+        
+        
+    .container
+      .row
+        .col-12
+          h3 Artificial worlds
+          p
+            | Terrain generation and object placement are inspired by 
+            a(href="https://www.youtube.com/watch?v=SePDzis8HqY", target="_blank") No Man's Sky
+            | .
+            br
+            | Air dynamics are a voxel-based simulation, based on 
+            a(href="http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html", target="_blank") GPU Gems
+            |  article.
+          p
+            | Originally meant to be a dynamic environment for artificial agents to adapt to, but it hasn't got to that point . . . yet
+          p
+            a.source-link(href="https://github.com/justgos/brave-gen", target="_blank")
+              | github
+    .container
+      .row
+        video(autoplay, loop, muted, src="img/brave-gen.mp4")
+        .img-shadow
+        
+    .container
+      .row
+        .col-12
+          h3 Map viewer for Lineage II
+          p
+            | In a time of being somewhat obsessed with the game, spent a few weeks dawn till dusk trying to find ways to read a (somewhat altered) UE data format and understanding how it's meant to be visualized.
+          p
+            a.source-link(href="https://github.com/justgos/l2mapper", target="_blank")
+              | github
+    .container
+      .row
+        img(src="img/l2mapper.jpg", style="margin-bottom: 0;")
+        .img-shadow
+    
+    .container
+      .row
+        .col-12
+          #footer
+            a(href="https://twitter.com/just_gos", target="_blank")
+              i.fab.fa-twitter

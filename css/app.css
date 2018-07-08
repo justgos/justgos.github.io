@@ -1,0 +1,108 @@
+html,
+body {
+  font-family: 'Lora', serif;
+  font-size: 1em;
+}
+h2 {
+  margin-top: 2em;
+  margin-bottom: 0em;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #e8e8e8;
+  font-size: 3rem;
+  font-family: 'Open Sans', sans-serif;
+}
+h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 1.5rem;
+  font-family: 'Lora', serif;
+}
+small {
+  color: #888;
+}
+.source-link {
+  font-family: 'Source Open Pro', sans-serif;
+}
+.container {
+  position: relative;
+}
+.container video,
+.container img {
+  width: 100%;
+  display: block;
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+.container .img-shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 576px) {
+  .container .img-shadow {
+    box-shadow: none;
+  }
+}
+.row {
+  display: block;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+#welcome {
+  position: relative;
+  width: 100%;
+}
+@media (max-height: 500px) {
+}
+#welcome p {
+  padding: 0 1em;
+}
+#logo-wrapper {
+  margin-top: 140px;
+  margin-bottom: 140px;
+  text-align: center;
+}
+#logo-img-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-height: 500px) {
+  #logo-img-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+}
+#logo {
+  position: absolute;
+  width: 200px;
+  margin: 0;
+}
+@media (max-height: 500px) {
+  #logo {
+    width: 150px;
+  }
+}
+#footer {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  text-align: center;
+}
+#footer a {
+  color: #ccc;
+}
+#footer a:hover {
+  color: #e8e8e8;
+}
+#footer a .fab {
+  font-size: 2rem;
+}
