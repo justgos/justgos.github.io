@@ -54,6 +54,23 @@ html
       .row
         .col-12
           h2(style="margin-top: 0;") In progress
+
+    .container
+      .row
+        .col-12
+          h3 EcoSystemOne
+          p
+            | A platform where you learn by teaching others — by telling stories together, in VR.
+          p
+            | Tech:
+            em  Unity (Photon, SteamVR), Node.js + Mongo, Python
+          p
+            a.source-link(href="https://ecosystemone.com/", target="_blank") site
+    .container
+      .row
+        video(autoplay, loop, muted, src="https://ecosystemone.com/vid/act.mp4")
+        .img-shadow
+
     .container
       .row
         .col-12
@@ -61,16 +78,19 @@ html
           p
             | A tool for thinking on scales larger/longer than mindmaps usually allow for.
             br
-            | Augmented with 
+            | Augmented with
             a(href="https://en.wikipedia.org/wiki/Extended_cognition", target="_blank") Wikipedia
             |  data.
+          p
+            | Tech:
+            em  Node.js + Mongo + Neo4j, HTML Canvas
           p
             a.source-link(href="https://extendedcognition.org/", target="_blank") site
     .container
       .row
         video(autoplay, loop, muted, src="img/ex-k.mp4")
         .img-shadow
-            
+
     .container
       .row
         .col-12
@@ -82,35 +102,41 @@ html
           p
             | Agents can evolve new limbs, which add new `in` and `out` neurons.
             br
-            | Mind is a Spiking Neural Network, implemented in 
+            | Mind is a Spiking Neural Network, implemented in
             a(href="https://brian2.readthedocs.io/en/stable/", target="_blank") brian2
-            |  and using 
+            |  and using
             a(href="http://www.izhikevich.org/publications/spikes.htm", target="_blank") Izhikevich
             |  cells dynamics.
           p
             | This experiment is currently suspended.
+          p
+            | Tech:
+            em  Python (Brian2), Unity, ZeroMQ
           p
             small.source-link not published
     .container
       .row
         img(src="img/body-evo-mind-structure.jpg")
         .img-shadow
-        
-        
+
+
     .container
       .row
         .col-12
           h3 Artificial worlds
           p
-            | Terrain generation and object placement are inspired by 
+            | Terrain generation and object placement are inspired by
             a(href="https://www.youtube.com/watch?v=SePDzis8HqY", target="_blank") No Man's Sky
             | .
             br
-            | Air dynamics are a voxel-based simulation, based on 
+            | Air dynamics are a voxel-based simulation, based on
             a(href="http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html", target="_blank") GPU Gems
             |  article.
           p
             | Originally meant to be a dynamic environment for artificial agents to adapt to, but it hasn't got to that point . . . yet
+          p
+            | Tech:
+            em  Unity, Python
           p
             a.source-link(href="https://github.com/justgos/brave-gen", target="_blank")
               | github
@@ -118,7 +144,7 @@ html
       .row
         video(autoplay, loop, muted, src="img/brave-gen.mp4")
         .img-shadow
-        
+
     .container
       .row
         .col-12
@@ -126,13 +152,16 @@ html
           p
             | In a time of being somewhat obsessed with the game, spent a few weeks dawn till dusk trying to find ways to read a (somewhat altered) UE data format and understanding how it's meant to be visualized.
           p
+            | Tech:
+            em  C++, OpenGL
+          p
             a.source-link(href="https://github.com/justgos/l2mapper", target="_blank")
               | github
     .container
       .row
         img(src="img/l2mapper.jpg", style="margin-bottom: 0;")
         .img-shadow
-    
+
     .container
       .row
         .col-12
