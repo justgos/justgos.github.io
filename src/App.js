@@ -10,7 +10,7 @@ import { store } from './core/state'
 import { sleep } from './util/time'
 import { ProjectData } from './data/ProjectData'
 import SceneController from './components/SceneController'
-import RenderHTML from './components/RenderHTML'
+import RenderText from './components/RenderText'
 import ProjectPreview from './components/ProjectPreview'
 import PixelSwarm from './components/PixelSwarm'
 import SwarmTarget from './components/SwarmTarget'
@@ -21,15 +21,18 @@ import ProjectInfo from './components/ProjectInfo'
 function App() {
   const [ locked, setLocked ] = useState(true);
 
+  const [ logoShape, setLogoShape ] = useState("content");
   const [ revealStage, setRevealStage ] = useState(0);
   useEffect(
     () => {
       const reveal = async() => {
-        await sleep(2000);
+        await sleep(4000);
         setRevealStage(1);
         await sleep(2000);
         setRevealStage(2);
-        // await sleep(1000);
+        await sleep(1500);
+        setLogoShape("generative-excog");
+        await sleep(1000);
         setLocked(false);
       };
       reveal();
@@ -66,22 +69,9 @@ function App() {
               <boxGeometry attach="geometry" args={[200, 200, 200]} />
               <meshStandardMaterial attach="material" />
             </mesh> */}
-            {/* <Text opacity={1} position={new THREE.Vector3(0, 10, 0)} color="black">
+            {/* <RenderText opacity={1} position={new THREE.Vector3(0, 10, 0)} color="black">
               Hello, dear traveller
-            </Text> */}
-            {/* <RenderHTML opacity={1} position={top.interpolate(top => [0, Math.round(top * dpi) / dpi, 0])} color="black">
-              <div className="welcome">
-                <div className="welcome-line">
-                  Hello, dear traveller
-                </div>
-                <div className="welcome-line">
-                  i'm GoS, and here's stuff i love and do
-                </div>
-              </div>
-            </RenderHTML> */}
-            {/* {projectData.map((project, i) => 
-              <ProjectPreview key={i} i={i} project={project} />
-            )} */}
+            </RenderText> */}
           </SceneController>
         </Canvas>
       </div>
@@ -89,7 +79,7 @@ function App() {
         {/* <div style={{ height: '525vh' }} /> */}
         <div className="hero">
           <div className="welcome">
-            <SwarmTarget id="logo" type="content" size={[ 200, 200 ]} scale={4} image="/textures/logo.png"/>
+            <SwarmTarget id="logo" type={logoShape} size={[ 200, 200 ]} scale={4} image="/textures/logo.png"/>
             <div className={"welcome-line" + (revealStage < 1 ? " hidden" : "")}>
               Hello, dear traveller
             </div>
@@ -97,25 +87,33 @@ function App() {
               i'm GoS, and here's stuff i love and do
             </div>
           </div>
+          <div className={"proceed" + (locked ? " hidden" : "")}>
+            <FontAwesome name="caret-down" />
+          </div>
         </div>
         <div className={"delayed-content" + (locked ? " locked" : "")}>
-          <div className="container">
+          {/* <div className="container"> */}
             {ProjectData.inProgress.map((project, i) => 
               <ProjectInfo key={i} project={project} />
             )}
-            <div className="project-group-header">
-              Archive
+            <div className="container">
+              <div className="project-group-header">
+                Archive
+              </div>
             </div>
             {ProjectData.archive.map((project, i) => 
               <ProjectInfo key={i} project={project} />
             )}
+            {/* <SwarmTarget id="epilogue" type="generative-thomas" size={[ 400, 400 ]} scale={4} /> */}
+            <div className="container">
+              <div className="footer">
+                <a href="https://twitter.com/just_gos" target="_blank" rel="noopener noreferrer">
+                  <FontAwesome name="twitter" />
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="footer">
-            <a href="https://twitter.com/just_gos" target="_blank" rel="noopener noreferrer">
-              <FontAwesome name="twitter" />
-            </a>
-          </div>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
