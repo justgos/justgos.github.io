@@ -26,23 +26,15 @@ export default function PixelSwarm({ children, position }) {
   store.subscribe(() => {
     updateTargets();
   })
-  // useEffect(
-  //   () => {
-  //     updateTargets();
-  //   },
-  //   [target]
-  // );
-  // const targetCache = useSelector(store => store.swarmTargets);
-  // const dispatch = useDispatch();
 
   // const ascii2coeff = new Map([..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((c, i) => [c, (-1.2 + i * 0.1).toFixed(1)]));
   // console.log('coeffs', [..."RMGOLOGUGIKKAQUNYYWPNQOPVIXLCONAYGJIROPFQBFMOREQJOOUBXDIVOLY"].map(c => ascii2coeff.get(c)).join(', '));
-
 
   // gl.precision = "mediump";
 
   // const { gl } = useThree();
   
+  // Setup point attribute buffers
   const positions = useMemo(
     () => {
       var arr = [];
@@ -53,11 +45,7 @@ export default function PixelSwarm({ children, position }) {
           0
         );
       }
-      return new Float32Array(arr)
-      // return new Float32Array(
-      //   Array.apply(null, {length: n*3})
-      //     .map(Number.call, Number)
-      //     .map(i => i % 3 === 2 ? 0 : (Math.random() - 0.5) * 1000));
+      return new Float32Array(arr);
     },
     [n]
   );
@@ -81,12 +69,10 @@ export default function PixelSwarm({ children, position }) {
   //   return [ r[0] - r[1] / 255.0, r[1], r[2] - r[3] / 255.0, r[3]];
   // }
 
+  // Compute texture intialization
   const fillPositionTex = (tex) => {
     let texData = tex.image.data;
     for(var i=0; i<texData.length; i+=4) {
-      // texData[i] = Math.random() * width;
-      // texData[i + 1] = Math.random() * -height;
-      // texData[i + 2] = 0;
       texData[i] = positions[i / 4 * 3];
       texData[i + 1] = positions[i / 4 * 3 + 1];
       texData[i + 2] = positions[i / 4 * 3 + 2];
@@ -112,6 +98,7 @@ export default function PixelSwarm({ children, position }) {
     }
   }
 
+  // Setup compute shaders
   const [ gpuCompute, targetPositionVariable, positionVariable, targetPositionTex, velocityVariable, colorVariable, targetColorTex ] = useMemo(
     () => {
       let gpuCompute = new GPUComputationRenderer(computeTexSize, computeTexSize, gl);
@@ -163,13 +150,14 @@ export default function PixelSwarm({ children, position }) {
     []
   );
 
+  // Update compute buffers with new target data
   useEffect(
     () => {
       if(!target)
         return;
       if(target.type === "content" && target.positions.length > 0) {
         let texData = targetPositionTex.image.data;
-        for(var i=0; i<texData.length; i+=4) {
+        for(let i=0; i<texData.length; i+=4) {
           texData[i] = target.positions[(i / 4 * 3) % target.positions.length];
           texData[i + 1] = target.positions[(i / 4 * 3 + 1) % target.positions.length];
           texData[i + 2] = target.positions[(i / 4 * 3 + 2) % target.positions.length];
@@ -187,29 +175,23 @@ export default function PixelSwarm({ children, position }) {
         // }
         targetPositionTex.needsUpdate = true;
         texData = targetColorTex.image.data;
-        for(var i=0; i<texData.length; i+=4) {
+        for(let i=0; i<texData.length; i+=4) {
           texData[i] = target.colors[i];
           texData[i + 1] = target.colors[i + 1];
           texData[i + 2] = target.colors[i + 2];
           texData[i + 3] = target.colors[i + 3];
         }
         targetColorTex.needsUpdate = true;
-  
-        // targetPositionVariable.material.uniforms["targetPositionTex"].value = targetPositionTex;
-        // gpuCompute.doRenderTarget(targetPositionVariable, gpuCompute.getCurrentRenderTarget(targetPositionVariable));
       } else {
-        let targetEl = document.getElementById(target.id).id;
-        // let targetSize = [ targetEl.offsetWidth, targetEl.offsetHeight ];
-        // let targetCenter = [ targetEl.offsetWidth, targetEl.offsetHeight ];
         let texData = targetPositionTex.image.data;
-        for(var i=0; i<texData.length; i+=4) {
+        for(let i=0; i<texData.length; i+=4) {
           texData[i] = (Math.random() - 0.5);
           texData[i + 1] = (Math.random() - 0.5);
           texData[i + 2] = 0.0;
         }
 
         texData = targetColorTex.image.data;
-        for(var i=0; i<texData.length; i+=4) {
+        for(let i=0; i<texData.length; i+=4) {
           texData[i] = 0;
           texData[i + 1] = 0;
           texData[i + 2] = 0;
@@ -242,13 +224,13 @@ export default function PixelSwarm({ children, position }) {
     }, []
   );
   useFrame(() => {
-    // Update time-related variables
     let curTime = performance.now();
     let dtime = Math.min((curTime - lastTime.value) / 1000, 0.1);
     lastTime.value = performance.now();
     // console.log('dtime', dtime * 1000.0);
     // setLastTime(curTime);
 
+    // Update time-related variables
     targetPositionVariable.material.uniforms["time"].value = curTime / 1000.0;
     targetPositionVariable.material.uniforms["delta"].value = dtime;
     velocityVariable.material.uniforms["time"].value = curTime / 1000.0;
@@ -257,6 +239,7 @@ export default function PixelSwarm({ children, position }) {
     colorVariable.material.uniforms["delta"].value = dtime;
     swarmShader.uniforms.time.value = curTime / 1000.0;
 
+    // Find the most appropriate `SwarmTarget`
     let intendedTarget;
     let scrollTop = document.scrollingElement.scrollTop;
     // Ref: https://stackoverflow.com/a/8876069
@@ -286,6 +269,7 @@ export default function PixelSwarm({ children, position }) {
       setTarget(intendedTarget);
     }
 
+    // Update target's size and position in compute shader
     if(target) {
       let targetEl = document.getElementById(target.id);
       let targetSize = [
@@ -306,13 +290,8 @@ export default function PixelSwarm({ children, position }) {
       velocityVariable.material.uniforms["targetScale"].value = targetSize;
       positionVariable.material.uniforms["dTargetOffset"].value = dTargetOffset;
       lastTargetOffset.value = targetOffset;
-      // if(target.type === "content") {
-      //   velocityVariable.material.uniforms["targetPositionOffset"].value = [ 0, 0 ];
-      // } else {
-      //   let targetCenter = [ targetEl.offsetWidth, targetEl.offsetHeight ];
-      //   velocityVariable.material.uniforms["targetPositionOffset"].value = [ targetCenter[0] / 2, -targetCenter[1] / 2 ];
-      // }
 
+      // Which type of dynamics should the shader compute?
       let targetType = 0;
       let velocityNoiseScale = 1.0;
       switch(target.type) {
@@ -378,22 +357,7 @@ export default function PixelSwarm({ children, position }) {
           attach="material"
           args={[swarmShader]}
         />
-        {/* <pointsMaterial attach="material" size={2} sizeAttenuation color="black" transparent opacity={0.8} fog={false} /> */}
       </a.points>
     </>
   )
 };
-
-// const mapStateToProps = (state, ownProps) => {
-//   console.log('state.swarmTargets', state.swarmTargets)
-//   if(ownProps.target in state.swarmTargets) {
-//     return {
-//       cachedTarget: state.swarmTargets[ownProps.target]
-//     };
-//   }
-//   return {};
-// };
-
-// export default connect(
-//   mapStateToProps
-// )(PixelSwarm);

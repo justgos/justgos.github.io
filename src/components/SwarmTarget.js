@@ -30,10 +30,10 @@ function SwarmTarget({ children, id, size, image, targetData, updateSwarmTarget,
         if(!newTargetData) {
           newTargetData = {
             id: id,
-            type: type,
-            scale: scale,
           };
         }
+        newTargetData.type = type;
+        newTargetData.scale = scale;
         if(type === "content" && !('positions' in newTargetData)) {
           // let canvas = await HTMLRenderer.render(children);
           // console.log('canvas.width', canvas.width)
@@ -87,7 +87,7 @@ function SwarmTarget({ children, id, size, image, targetData, updateSwarmTarget,
       return () => {
         removeSwarmTarget(id);
       }
-    }, [el]
+    }, [el, type, scale]
   );
 
   return (

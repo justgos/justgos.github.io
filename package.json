@@ -5,9 +5,8 @@
   "homepage": "https://justgos.github.io/",
   "dependencies": {
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.1.1",
     "gl-matrix": "^3.1.0",
-    "html-to-image": "^0.1.1",
-    "html2canvas": "^1.0.0-rc.5",
     "include-media": "^1.4.9",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
@@ -26,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -b master",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

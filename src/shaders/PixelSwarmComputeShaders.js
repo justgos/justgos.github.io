@@ -88,6 +88,8 @@ export const PixelSwarmTargetPositionShader = `
       dtdt.x = v;
       dtdt.y = dv;
     } else if(targetType == 4) {
+      // Custom - excog
+
       // float maxInteractionDist = 0.01;
       // for(float i=0.0; i<resolution.x; i++) {
       //   for(float j=0.0; j<resolution.y; j++) {
@@ -101,7 +103,7 @@ export const PixelSwarmTargetPositionShader = `
       // }
 
       speed = 8.0;
-      rescale(10.0);
+      rescale(5.0);
       float rPhase = pow(abs(sin(time * 0.2 + gl_FragCoord.y / resolution.y * 0.2)), 2.0);
       float r = 5.0 * rPhase + 0.1;
       // gl_FragCoord.x / resolution.x * 2.0 * 3.14159
