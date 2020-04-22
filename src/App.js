@@ -15,6 +15,7 @@ import ProjectPreview from './components/ProjectPreview'
 import PixelSwarm from './components/PixelSwarm'
 import SwarmTarget from './components/SwarmTarget'
 import ProjectInfo from './components/ProjectInfo'
+import DynamicCanvas from './components/DynamicCanvas'
 
 // const gpu = new GPU({mode: "gpu"});
 
@@ -22,6 +23,7 @@ function App() {
   const [ locked, setLocked ] = useState(true);
 
   const [ logoShape, setLogoShape ] = useState("content");
+  const [ logoPointSize, setLogoPointSize ] = useState(1);
   const [ revealStage, setRevealStage ] = useState(0);
   useEffect(
     () => {
@@ -32,10 +34,12 @@ function App() {
         setRevealStage(2);
         await sleep(1500);
         setLogoShape("generative-excog");
+        setLogoPointSize(2);
         await sleep(1000);
         setLocked(false);
       };
-      reveal();
+      // reveal();
+
       // // document.documentElement.className = "locked";
       // setTimeout(() => {
       //   // document.documentElement.className = "";
@@ -54,32 +58,38 @@ function App() {
             near: 1.0,
             far: 10000,
             position: [0, 0, 1000],
-            rotation: new THREE.Euler(0, 0, 0)
+            rotation: new THREE.Euler(0, 0, 0),
+            zoom: 3.0,
           }}
           orthographic={true}
-          pixelRatio={window.devicePixelRatio || 1}
-          onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFSoftShadowMap; }}>
-          <SceneController>
-          <PixelSwarm position={[0, 0, 0]} />
-            {/* <mesh 
-              position={new THREE.Vector3(0, -200, 0)}
-              rotation={new THREE.Euler(0, 0, 0)} 
-              castShadow 
-              receiveShadow>
-              <boxGeometry attach="geometry" args={[200, 200, 200]} />
-              <meshStandardMaterial attach="material" />
+          pixelRatio={dpi}
+          // onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFSoftShadowMap; }}
+          // gl2={true}
+        >
+          <DynamicCanvas>
+            {/* <mesh frustumCulled={false} position={[300, -300, 0]}>
+              <planeBufferGeometry attach="geometry" args={[400, 400]} />
+              <meshStandardMaterial attach="material" color="#000" />
             </mesh> */}
-            {/* <RenderText opacity={1} position={new THREE.Vector3(0, 10, 0)} color="black">
-              Hello, dear traveller
-            </RenderText> */}
-          </SceneController>
+            <PixelSwarm position={[0, 0, 0]} />
+          </DynamicCanvas>
+
+          {/* <SceneController>
+            <PixelSwarm position={[0, 0, 0]} />
+          </SceneController> */}
+          
+          {/* <mesh frustumCulled={false} position={[300, -300, 100]}>
+            <planeBufferGeometry attach="geometry" args={[400, 400]} />
+            <meshStandardMaterial attach="material" color="#000" />
+          </mesh> */}
         </Canvas>
       </div>
       <div className="content">
         {/* <div style={{ height: '525vh' }} /> */}
         <div className="hero">
           <div className="welcome">
-            <SwarmTarget id="logo" type={logoShape} size={[ 200, 200 ]} scale={4} image="/textures/logo.png"/>
+            <SwarmTarget id="logo" type={logoShape} size={[ 200, 200 ]} scale={logoPointSize} image="/textures/logo.png"/>
+            {/* <SwarmTarget id="logo" type="generative-thomas" size={[ 400, 400 ]} scale={4} /> */}
             <div className={"welcome-line" + (revealStage < 1 ? " hidden" : "")}>
               Hello, dear traveller
             </div>

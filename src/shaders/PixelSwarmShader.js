@@ -53,6 +53,7 @@ export default class PixelSwarmShader extends THREE.ShaderMaterial {
       // blending: THREE.CustomBlending,
       // blendEquation: THREE.AddEquation,
       blending: THREE.AdditiveBlending,
+      // blending: THREE.SubtractiveBlending,
       // blending: THREE.NormalBlending,
       depthTest: false,
       transparent: true,
