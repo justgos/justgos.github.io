@@ -1,7 +1,6 @@
 import * as THREE from 'three'
-import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
-import { Canvas, useFrame, useThree } from 'react-three-fiber'
-import { apply as applySpring, useSpring, a, interpolate } from 'react-spring/three'
+import React, { useMemo, useRef } from 'react'
+import { useFrame, useThree } from 'react-three-fiber'
 
 import { dpi } from '../config'
 
@@ -18,10 +17,8 @@ export default function SceneController({ children }) {
   );
   const sceneRef = useRef();
   const mainLight = useRef();
-  const [ swarmTarget, setSwarmTarget ] = useState("logo");
   useFrame(() => {
     let curTime = performance.now();
-    let dtime = (curTime - lastTime.value) / 1000;
     lastTime.value = curTime;
     fpsCount.value++;
     if(curTime > lastReportTime.value + 1000.0) {

@@ -4,7 +4,7 @@ import { useFrame, useThree } from 'react-three-fiber';
 import { a } from 'react-spring/three';
 
 import { dpi } from '../config'
-import { store } from '../core/state'
+import { store, updateSwarmState } from '../core/state'
 import GPUComputationRenderer from '../compute/GPUComputationRenderer';
 import PixelSwarmShader from '../shaders/PixelSwarmShader';
 import { PixelSwarmTargetPositionShader, PixelSwarmVelocityShader, PixelSwarmPositionShader, PixelSwarmColorShader} from '../shaders/PixelSwarmComputeShaders';
@@ -94,7 +94,7 @@ export default function PixelSwarm({ children, position }) {
       texData[i] = 0.0;
       texData[i + 1] = 0.0;
       texData[i + 2] = 0.0;
-      texData[i + 3] = 0.0;
+      texData[i + 3] = 1.0;
     }
   }
 
@@ -145,6 +145,7 @@ export default function PixelSwarm({ children, position }) {
       if ( error !== null ) {
           console.error( error );
       }
+      store.dispatch(updateSwarmState({ positionTex }));
       return [ gpuCompute, targetPositionVariable, positionVariable, targetPositionTex, velocityVariable, colorVariable, targetColorTex ];
     },
     []
@@ -177,7 +178,7 @@ export default function PixelSwarm({ children, position }) {
         texData = targetColorTex.image.data;
         for(let i=0; i<texData.length; i+=4) {
           texData[i] = target.colors[i];
-          texData[i + 1] = target.colors[i + 1];
+          texData[i + 1] = Math.random() < 0.95 ? target.colors[i + 1] : 1.0;
           texData[i + 2] = target.colors[i + 2];
           texData[i + 3] = target.colors[i + 3];
         }
@@ -359,5 +360,5 @@ export default function PixelSwarm({ children, position }) {
         />
       </a.points>
     </>
-  )
+  );
 };
