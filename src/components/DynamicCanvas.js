@@ -1,4 +1,4 @@
-import { WebGLMultisampleRenderTarget as MSRT, WebGLRenderTarget, RGBFormat, RGBAFormat, OrthographicCamera, Scene, Mesh, Color } from 'three'
+import { WebGLMultisampleRenderTarget as MSRT, WebGLRenderTarget, RGBFormat, RGBAFormat, UnsignedByteType, OrthographicCamera, Scene, Mesh, Color } from 'three'
 import * as THREE from 'three';
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { useFrame, useThree, extend } from 'react-three-fiber';
@@ -239,8 +239,17 @@ export default function DynamicCanvas({ children }) {
   const { width, height } = { width: size.width * devicePixelRatio, height: size.height * devicePixelRatio }
   const composer = useRef()
   const [ renderTargets, rttCamera ] = useMemo(() => {
-    const target1 = new WebGLRenderTarget(width, height, { format: RGBAFormat })
-    const target2 = new WebGLRenderTarget(width, height, { format: RGBAFormat })
+    const targetOptions = {
+      format: RGBAFormat,
+      type: UnsignedByteType,
+      magFilter: THREE.NearestFilter,
+      minFilter: THREE.NearestFilter,
+      depthBuffer: false,
+      stencilBuffer: false,
+      generateMipmaps: false,
+    };
+    const target1 = new WebGLRenderTarget(width, height, targetOptions);
+    const target2 = new WebGLRenderTarget(width, height, targetOptions);
     // target.samples = 8
     const rttCamera = new OrthographicCamera( camera.left, camera.right, camera.top, camera.bottom, camera.near, camera.far );
     return [ [ target1, target2 ], rttCamera ]
@@ -291,7 +300,7 @@ export default function DynamicCanvas({ children }) {
           </mesh> */}
           <mesh ref={rttBg} frustumCulled={false} position={[width / dpi / 2, -height / dpi / 2, -100]}>
             <planeBufferGeometry attach="geometry" args={[width / dpi, height / dpi]} />
-            <meshBasicMaterial attach="material" transparent opacity={0.97} />
+            <meshBasicMaterial attach="material" transparent opacity={0.9 /*0.97*/} />
             {/* <shaderMaterial attach="material" args={[canvasShader]} /> */}
           </mesh>
           <group ref={rttGroup}>

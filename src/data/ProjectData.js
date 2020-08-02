@@ -39,6 +39,8 @@ export const ProjectData = {
       previewType: "generative-thomas",
       previewSize: [ 400, 400 ],
     },
+  ],
+  archive: [
     {
       id: "eso",
       name: "EcoSystemOne",
@@ -57,8 +59,6 @@ export const ProjectData = {
       previewSize: [ 400, 400 ],
       previewScale: 7,
     },
-  ],
-  archive: [
     {
       id: "body-evo",
       name: "Mind-body evolution",

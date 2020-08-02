@@ -23,7 +23,7 @@ function App() {
   const [ locked, setLocked ] = useState(true);
 
   const [ logoShape, setLogoShape ] = useState("content");
-  const [ logoPointSize, setLogoPointSize ] = useState(1);
+  const [ logoPointSize, setLogoPointSize ] = useState(2);
   const [ revealStage, setRevealStage ] = useState(0);
   useEffect(
     () => {
@@ -38,7 +38,7 @@ function App() {
         await sleep(1000);
         setLocked(false);
       };
-      // reveal();
+      reveal();
 
       // // document.documentElement.className = "locked";
       // setTimeout(() => {
@@ -59,7 +59,7 @@ function App() {
             far: 10000,
             position: [0, 0, 1000],
             rotation: new THREE.Euler(0, 0, 0),
-            zoom: 3.0,
+            // zoom: 2.5,
           }}
           orthographic={true}
           pixelRatio={dpi}
