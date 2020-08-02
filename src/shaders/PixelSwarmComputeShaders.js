@@ -60,6 +60,7 @@ export const PixelSwarmTargetPositionShader = `
 
     if(targetType == 1) {
       // Thomas' cyclically symmetric attractor
+      // rescale(4.0);
       float b = 0.208186;
       dtdt.x = sin(rescaled.y) - b * rescaled.x;
       dtdt.y = sin(rescaled.z) - b * rescaled.y;

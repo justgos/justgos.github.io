@@ -45,11 +45,11 @@ export default class PixelSwarmShader extends THREE.ShaderMaterial {
           // gl_FragColor = vec4( vColor, 1.0 );
           gl_FragColor = vColor;
           // gl_FragColor = vec4(1.0, 1.0, 1.0, vColor.w) * texture2D(pointTexture, gl_PointCoord);
-          gl_FragColor.w *= 0.4;
+          gl_FragColor.w *= 0.3;
         }
       `,
-      // blendSrc: THREE.SrcAlphaFactor,
-      // blendDst: THREE.OneMinusSrcColorFactor,
+      // blendSrc: THREE.OneFactor,
+      // blendDst: THREE.OneFactor,
       // blending: THREE.CustomBlending,
       // blendEquation: THREE.AddEquation,
       blending: THREE.AdditiveBlending,
