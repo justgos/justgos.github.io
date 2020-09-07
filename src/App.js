@@ -48,6 +48,27 @@ function App() {
     }, []
   );
 
+  const [ shouldRender, setShouldRender ] = useState(true);
+
+  useEffect(() => {
+    const onScroll = e => {
+      if(e.target.documentElement.scrollTop > window.innerHeight) {
+        if(shouldRender) {
+          console.log('shouldRender false', shouldRender, false)
+          setShouldRender(false);
+        }
+      } else {
+        if(!shouldRender) {
+          console.log('shouldRender true', shouldRender, true)
+          setShouldRender(true);
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [shouldRender]);
+
   return (
     <div className="App">
       <div className="main-canvas">
@@ -63,6 +84,7 @@ function App() {
           }}
           orthographic={true}
           pixelRatio={dpi}
+          invalidateFrameloop={!shouldRender}
           // onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFSoftShadowMap; }}
           // gl2={true}
         >
