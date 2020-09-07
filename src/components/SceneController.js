@@ -27,7 +27,7 @@ export default function SceneController({ children }) {
         fpsCount.value = 0;
     }
 
-    let scrollTop = document.scrollingElement.scrollTop;
+    let scrollTop = 0;  // document.scrollingElement.scrollTop;
 
     camera.position.x = width / 2;
     camera.position.y = -height / 2;
