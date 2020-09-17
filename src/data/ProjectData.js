@@ -3,6 +3,60 @@ import React from 'react'
 export const ProjectData = {
   inProgress: [
     {
+      id: "currently",
+      name: "Currently..",
+      desc: (
+        <div>
+          Mapping out the paths to longevity.
+        </div>
+      ),
+      // tech: ["Python"],
+      // links: [
+      //   { label: "github", url: "https://github.com/justgos/thingness" },
+      // ],
+      // image: "/textures/project-thingness-image.png",
+      // video: "/video/thingness.mp4",
+      previewType: "generative-thomas",
+      previewSize: [ 400, 400 ],
+    },
+  ],
+  archive: [
+    {
+      id: "indagatio-muris-senis",
+      name: "Indagatio Muris Senis",
+      desc: (
+        <div>
+          Exploration of the Mus Musculus aging dynamics
+        </div>
+      ),
+      tech: ["Python", "TypeScript", "WebGL"],
+      links: [
+        { label: "visualization", url: "https://gos.garden/vis-age/" },
+        { label: "github", url: "https://github.com/justgos/indagatio-muris-senis" },
+      ],
+      // image: "/textures/project-thingness-image.png",
+      video: "/video/indagatio-muris-senis.mp4",
+      previewType: "generative-thomas",
+      previewSize: [ 400, 400 ],
+    },
+    {
+      id: "thingness",
+      name: "Thingness",
+      desc: (
+        <div>
+          Exploration of cell-level morphogenesis in 2D
+        </div>
+      ),
+      tech: ["Python"],
+      links: [
+        { label: "github", url: "https://github.com/justgos/thingness" },
+      ],
+      // image: "/textures/project-thingness-image.png",
+      video: "/video/thingness.mp4",
+      previewType: "generative-thomas",
+      previewSize: [ 400, 400 ],
+    },
+    {
       id: "excog",
       name: "Extended Knowledge",
       desc: (
@@ -22,25 +76,6 @@ export const ProjectData = {
       previewType: "generative-excog",
       previewSize: [ 400, 400 ],
     },
-    {
-      id: "thingness",
-      name: "Thingness",
-      desc: (
-        <div>
-          Evolutionary exploration of cell-level morphogenesis in 2D
-        </div>
-      ),
-      tech: ["Python"],
-      links: [
-        { label: "github", url: "https://github.com/justgos/thingness" },
-      ],
-      // image: "/textures/project-thingness-image.png",
-      video: "/video/thingness.mp4",
-      previewType: "generative-thomas",
-      previewSize: [ 400, 400 ],
-    },
-  ],
-  archive: [
     {
       id: "eso",
       name: "EcoSystemOne",

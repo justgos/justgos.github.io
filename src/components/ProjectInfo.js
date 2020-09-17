@@ -3,7 +3,7 @@ import SwarmTarget from './SwarmTarget'
 
 export default function ProjectInfo({ project }) {
   return (
-    <div className="project" key={project.id}>
+    <div id={project.id} className="project" key={project.id}>
       <div className="container">
         <div className={"project-name " + project.id}>{project.name}</div>
         <div className="project-desc">{project.desc}</div>

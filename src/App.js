@@ -28,14 +28,20 @@ function App() {
   useEffect(
     () => {
       const reveal = async() => {
-        await sleep(4000);
-        setRevealStage(1);
-        await sleep(2000);
-        setRevealStage(2);
-        await sleep(1500);
-        setLogoShape("generative-excog");
-        setLogoPointSize(2);
-        await sleep(1000);
+        if(window.location.hash.length < 1) {
+          await sleep(4000);
+          setRevealStage(1);
+          await sleep(2000);
+          setRevealStage(2);
+          await sleep(1500);
+          setLogoShape("generative-excog");
+          setLogoPointSize(2);
+          await sleep(1000);
+        } else {
+          setRevealStage(2);
+          setLogoPointSize(2);
+          setLogoShape("generative-excog");
+        }
         setLocked(false);
       };
       reveal();
