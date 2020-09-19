@@ -69,7 +69,7 @@ export const ProjectData = {
       links: [
         { label: "website", url: "https://extendedcognition.org/" },
         // { label: "video", url: "https://youtu.be/Pn0lUIH5Fy8" },
-        { label: "my graph", url: "https://extendedcognition.org/graph/justgos" },
+        { label: "my old graph", url: "https://extendedcognition.org/graph/justgos" },
       ],
       // image: "/textures/project-excog-image.png",
       video: "/video/ex-k.mp4",
