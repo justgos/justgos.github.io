@@ -7,7 +7,7 @@ export const ProjectData = {
       name: "Currently..",
       desc: (
         <div>
-          Mapping out the paths to longevity.
+          Mapping out the paths to longevity
         </div>
       ),
       // tech: ["Python"],
@@ -15,7 +15,7 @@ export const ProjectData = {
       //   { label: "github", url: "https://github.com/justgos/thingness" },
       // ],
       // image: "/textures/project-thingness-image.png",
-      // video: "/video/thingness.mp4",
+      video: "/video/currently.mp4",
       previewType: "generative-thomas",
       previewSize: [ 400, 400 ],
     },
