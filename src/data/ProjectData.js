@@ -7,7 +7,7 @@ export const ProjectData = {
       name: "Currently..",
       desc: (
         <div>
-          Mapping out the paths to longevity
+          Mapping out our skills in dancing with the biological machinery while building a new tool for thought
         </div>
       ),
       // tech: ["Python"],
