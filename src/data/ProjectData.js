@@ -11,9 +11,9 @@ export const ProjectData = {
         </div>
       ),
       // tech: ["Python"],
-      // links: [
-      //   { label: "github", url: "https://github.com/justgos/thingness" },
-      // ],
+      links: [
+        { label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
+      ],
       // image: "/textures/project-thingness-image.png",
       video: "/video/currently.mp4",
       previewType: "generative-thomas",
@@ -67,9 +67,8 @@ export const ProjectData = {
       ),
       tech: ["React", "Canvas rendering", "socket.io", "Node.js", "Mongo", "Neo4j", "ElasticSearch"],
       links: [
-        { label: "website", url: "https://extendedcognition.org/" },
-        // { label: "video", url: "https://youtu.be/Pn0lUIH5Fy8" },
-        { label: "my old graph", url: "https://extendedcognition.org/graph/justgos" },
+        // { label: "website", url: "https://extendedcognition.org/" },
+        { label: "video", url: "https://youtu.be/Pn0lUIH5Fy8" },
       ],
       // image: "/textures/project-excog-image.png",
       video: "/video/ex-k.mp4",
