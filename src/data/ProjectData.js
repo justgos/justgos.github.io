@@ -4,10 +4,28 @@ export const ProjectData = {
   inProgress: [
     {
       id: "currently",
-      name: "Currently..",
+      name: "[unnamed project]",
       desc: (
         <div>
-          Mapping out our skills in dancing with the biological machinery while building a new tool for thought
+          Pondering how to link biological observations across spatial and temporal scales.<br/>
+          To draw long-range inferences that'd fill gaps in our knowledge
+        </div>
+      ),
+      // tech: ["Python"],
+      links: [
+        //{ label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
+      ],
+      // image: "/textures/project-thingness-image.png",
+      //video: "/video/currently.mp4",
+      previewType: "generative-thomas",
+      previewSize: [ 400, 400 ],
+    },
+    {
+      id: "excog-2",
+      name: "Extended Knowledge v2",
+      desc: (
+        <div>
+          A personal tool for thinking
         </div>
       ),
       // tech: ["Python"],
@@ -15,12 +33,29 @@ export const ProjectData = {
         { label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
       ],
       // image: "/textures/project-thingness-image.png",
-      video: "/video/currently.mp4",
+      video: "/video/excog-2.mp4",
       previewType: "generative-thomas",
       previewSize: [ 400, 400 ],
     },
   ],
   archive: [
+    {
+      id: "spatial-cell",
+      name: "Spatial cell",
+      desc: (
+        <div>
+          Molecule-scale simulation of a biological cell
+        </div>
+      ),
+      tech: ["C++", "CUDA", "Unity", "Python"],
+      links: [
+        { label: "github", url: "https://github.com/justgos/spatial-cell" },
+      ],
+      // image: "/textures/project-thingness-image.png",
+      video: "/video/spatial-cell.mp4",
+      previewType: "generative-thomas",
+      previewSize: [ 400, 400 ],
+    },
     {
       id: "indagatio-muris-senis",
       name: "Indagatio Muris Senis",
@@ -58,7 +93,7 @@ export const ProjectData = {
     },
     {
       id: "excog",
-      name: "Extended Knowledge",
+      name: "Extended Knowledge v1",
       desc: (
         <div>
           A tool for thinking on scales larger/longer than mindmaps usually allow for.<br/>
@@ -68,7 +103,9 @@ export const ProjectData = {
       tech: ["React", "Canvas rendering", "socket.io", "Node.js", "Mongo", "Neo4j", "ElasticSearch"],
       links: [
         // { label: "website", url: "https://extendedcognition.org/" },
-        { label: "video", url: "https://youtu.be/Pn0lUIH5Fy8" },
+        { label: "iteration 1 (video)", url: "https://www.youtube.com/watch?v=pQgasxd2-mE" },
+        { label: "iteration 2 (video)", url: "https://www.youtube.com/watch?v=aPhjCrcgRPY" },
+        { label: "iteration 3 (video)", url: "https://www.youtube.com/watch?v=FmLUpeSrsC0" },
       ],
       // image: "/textures/project-excog-image.png",
       video: "/video/ex-k.mp4",
