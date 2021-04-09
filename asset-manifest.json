@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.85266c66.chunk.css",
-    "main.js": "/static/js/main.9b27ff0c.chunk.js",
-    "main.js.map": "/static/js/main.9b27ff0c.chunk.js.map",
+    "main.js": "/static/js/main.60a8b169.chunk.js",
+    "main.js.map": "/static/js/main.60a8b169.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.50b8feb0.js",
     "runtime-main.js.map": "/static/js/runtime-main.50b8feb0.js.map",
     "static/js/2.f23fe1db.chunk.js": "/static/js/2.f23fe1db.chunk.js",
     "static/js/2.f23fe1db.chunk.js.map": "/static/js/2.f23fe1db.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.c9ebcd0b392fc18ec40ca1537e209b4d.js": "/precache-manifest.c9ebcd0b392fc18ec40ca1537e209b4d.js",
+    "precache-manifest.1e130774b4b5e914ed62e728e7ccd1d7.js": "/precache-manifest.1e130774b4b5e914ed62e728e7ccd1d7.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.85266c66.chunk.css.map": "/static/css/main.85266c66.chunk.css.map",
     "static/media/App.scss": "/static/media/fontawesome-webfont.fee66e71.woff"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.50b8feb0.js",
     "static/js/2.f23fe1db.chunk.js",
     "static/css/main.85266c66.chunk.css",
-    "static/js/main.9b27ff0c.chunk.js"
+    "static/js/main.60a8b169.chunk.js"
   ]
 }
