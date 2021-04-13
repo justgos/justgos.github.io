@@ -20,23 +20,23 @@ export const ProjectData = {
       previewType: "generative-thomas",
       previewSize: [ 400, 400 ],
     },
-    {
-      id: "excog-2",
-      name: "Extended Knowledge v2",
-      desc: (
-        <div>
-          A personal tool for thinking
-        </div>
-      ),
-      // tech: ["Python"],
-      links: [
-        { label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
-      ],
-      // image: "/textures/project-thingness-image.png",
-      video: "/video/excog-2.mp4",
-      previewType: "generative-thomas",
-      previewSize: [ 400, 400 ],
-    },
+    // {
+    //   id: "excog-2",
+    //   name: "Extended Knowledge v2",
+    //   desc: (
+    //     <div>
+    //       A personal tool for thinking
+    //     </div>
+    //   ),
+    //   // tech: ["Python"],
+    //   links: [
+    //     { label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
+    //   ],
+    //   // image: "/textures/project-thingness-image.png",
+    //   video: "/video/excog-2.mp4",
+    //   previewType: "generative-thomas",
+    //   previewSize: [ 400, 400 ],
+    // },
   ],
   archive: [
     {
@@ -49,6 +49,7 @@ export const ProjectData = {
       ),
       tech: ["C++", "CUDA", "Unity", "Python"],
       links: [
+        { label: "blog post", url: "https://graph.gos.garden/node/4bbb96b6-d858-419a-94d3-e7eae9e008ad#" },
         { label: "github", url: "https://github.com/justgos/spatial-cell" },
       ],
       // image: "/textures/project-thingness-image.png",
