@@ -156,6 +156,7 @@ export default function PixelSwarm({ children, position }) {
     () => {
       if(!target)
         return;
+      console.log('target', target)
       if(target.type === "content" && target.positions.length > 0) {
         let texData = targetPositionTex.image.data;
         for(let i=0; i<texData.length; i+=4) {

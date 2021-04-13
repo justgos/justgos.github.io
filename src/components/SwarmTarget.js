@@ -5,6 +5,7 @@ import { dpi } from '../config'
 import { updateSwarmTarget, removeSwarmTarget } from '../core/state'
 import { shuffle } from '../util/array';
 import HTMLRenderer from '../util/HTMLRenderer';
+import { sleep } from '../util/time';
 
 function SwarmTarget({ children, id, size, image, targetData, updateSwarmTarget, removeSwarmTarget, type="content", scale=4 }) {
   // const [ size, setSize ] = useState([window.innerWidth, window.innerHeight]);
@@ -38,6 +39,9 @@ function SwarmTarget({ children, id, size, image, targetData, updateSwarmTarget,
           // let canvas = await HTMLRenderer.render(children);
           // console.log('canvas.width', canvas.width)
           // let img = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+          // While image loads, set up a dummy target description
+          updateSwarmTarget(id, { ...newTargetData, type: "generative-excog" });
+          //await sleep(3000);
           let img = await HTMLRenderer.renderImage(image, size);
           for(let i = 0; i < img.length / 4; i++) {
             let pix = [img[i*4], img[i*4+1], img[i*4+2], img[i*4+3]];
