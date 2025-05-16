@@ -48,11 +48,11 @@ export default class PixelSwarmShader extends THREE.ShaderMaterial {
           gl_FragColor.w *= 0.3;
         }
       `,
-      // blendSrc: THREE.OneFactor,
-      // blendDst: THREE.OneFactor,
+      blendSrc: THREE.OneFactor,
+      blendDst: THREE.OneFactor,
       // blending: THREE.CustomBlending,
       // blendEquation: THREE.AddEquation,
-      blending: THREE.AdditiveBlending,
+      // blending: THREE.AdditiveBlending,
       // blending: THREE.SubtractiveBlending,
       // blending: THREE.NormalBlending,
       depthTest: false,

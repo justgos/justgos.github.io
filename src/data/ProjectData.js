@@ -2,24 +2,24 @@ import React from 'react'
 
 export const ProjectData = {
   inProgress: [
-    {
-      id: "currently",
-      name: "[unnamed project]",
-      desc: (
-        <div>
-          Pondering how to link biological observations across spatial and temporal scales.<br/>
-          To draw long-range inferences that'd fill gaps in our knowledge
-        </div>
-      ),
-      // tech: ["Python"],
-      links: [
-        //{ label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
-      ],
-      // image: "/textures/project-thingness-image.png",
-      //video: "/video/currently.mp4",
-      previewType: "generative-thomas",
-      previewSize: [ 400, 400 ],
-    },
+    // {
+    //   id: "currently",
+    //   name: "[unnamed project]",
+    //   desc: (
+    //     <div>
+    //       Pondering how to link biological observations across spatial and temporal scales.<br/>
+    //       To draw long-range inferences that'd fill gaps in our knowledge
+    //     </div>
+    //   ),
+    //   // tech: ["Python"],
+    //   links: [
+    //     //{ label: "view graph", url: "https://graph.gos.garden/#z=1530.00/47.98/0.51" },
+    //   ],
+    //   // image: "/textures/project-thingness-image.png",
+    //   //video: "/video/currently.mp4",
+    //   previewType: "generative-thomas",
+    //   previewSize: [ 400, 400 ],
+    // },
     // {
     //   id: "excog-2",
     //   name: "Extended Knowledge v2",
@@ -39,6 +39,34 @@ export const ProjectData = {
     // },
   ],
   archive: [
+    {
+      id: "zenith",
+      name: "Zenith: The Last City",
+      desc: (
+        <div>
+          As a part of the RamevVR team, brought the VR MMO through multiple releases, starting from pre-beta.
+          <br/>
+          <ul style={{
+            marginTop: '.5em',
+            paddingInlineStart: '40px',
+          }}>
+            <li>Engineered the procedural grass and clouds.</li>
+            <li>Designed and implemented the "sentive" and "bird" gliding modes, utilizing more controller DoFs — feels less like pressing a button a more like having wings.</li>
+            <li>Co-designed and implemented the house building, with seamless instancing and shared neighborhoods.</li>
+            <li>Ported the networking from SpatialOS onto a custom-made back-end, supporting 100 players in close proximity with full-skeleton network sync on a single shard.</li>
+            <li>Architected and administered the cloud infrastructure with multiple regions (GCP/Terraform/K8s) and developed monitoring, analytics and game master tools.</li>
+          </ul>
+        </div>
+      ),
+      tech: ["C#", "Unity", "Compute shaders", "TypeScript / React", "Kuberneres", "Terraform"],
+      links: [
+        { label: "first release trailer", url: "https://www.youtube.com/watch?v=oPEho2Zb_JM" },
+      ],
+      // image: "/textures/project-thingness-image.png",
+      video: "/video/zenith.mp4",
+      previewType: "generative-thomas",
+      previewSize: [ 400, 400 ],
+    },
     {
       id: "spatial-cell",
       name: "Spatial cell",
