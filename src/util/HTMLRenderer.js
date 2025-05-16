@@ -40,9 +40,10 @@ export default class HTMLRenderer {
     // ctx.lineTo(150, 150);
     // ctx.stroke();
     ctx.drawImage(img, 0, 0, size[0], size[1]);
-    let pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    // let pixels = imgData.data;
 
     document.body.removeChild(canvas);
-    return pixels;
+    return imgData;
   }
 }

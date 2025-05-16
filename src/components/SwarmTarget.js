@@ -42,13 +42,13 @@ function SwarmTarget({ children, id, size, image, targetData, updateSwarmTarget,
           // While image loads, set up a dummy target description
           updateSwarmTarget(id, { ...newTargetData, type: "generative-excog" });
           //await sleep(3000);
-          let img = await HTMLRenderer.renderImage(image, size);
+          let { data: img, width, height } = await HTMLRenderer.renderImage(image, size);
           for(let i = 0; i < img.length / 4; i++) {
             let pix = [img[i*4], img[i*4+1], img[i*4+2], img[i*4+3]];
             if(pix[3] > 0.0) {
               positions.push(
-                ((i % (size[0] * dpi)) / dpi + 0.25) / size[0] - 0.5, 
-                (-Math.floor(i / (size[0] * dpi)) / dpi + 0.25) / size[1] + 0.5, 
+                ((i % width) / dpi + 0.25) / size[1] - 0.5, 
+                (-Math.floor(i / width) / dpi + 0.25) / size[1] + 0.5, 
                 0
               );
               colors.push(
